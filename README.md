@@ -41,7 +41,7 @@
 
 > 作者在论文中给出了多任务模型在相关性不同的数据集上的表现，证明：相关性越低，多任务学习的效果越差，如图：
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/1.jpg)
 
 > 在实际过程中，如何去识别不同任务之间的相关性也是非常难的。基于此，作者提出了 MMoE 框架，旨在构建一个兼容性更强的多任务学习框架。
 
@@ -53,21 +53,23 @@ img
 >
 > 所有任务共享底层网络，并同时保留几个特定任务的输出层。
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/2.jpg)
 
 #### One-gate MoE Layer
 
 > One-gate MoE layer 是将隐藏层划分为多个专家(expert)子网，同时接入一个 Gate 网络，将各个子网的输出和输入信息进行组合，并将得到的结果进行相加。
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/3.jpg)
 
-
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/5.jpg)
 
 #### Multi-gate MoE model
 
 > One-gate MoE 能够实现不同数据多样化使用共享层，但针对不同任务而言，其使用的共享层是一致的。这种情况下，如果任务相关性较低，则会导致模型性能下降。所以，作者在此基础上提出了 MMoE 模型，为每个任务都设置了一个 Gate 网路，旨在使得不同任务和不同数据可以多样化的使用共享层，其模型结构如下：
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/4.jpg)
+
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/6.jpg)
 
 > 这种情况下，每个 Gate 网络都可以根据不同任务来选择专家网络的子集，所以即使两个任务并不是十分相关，那么经过 Gate 后也可以得到不同的权重系数。此时，MMoE 可以充分利用部分 expert 网络的信息，近似于单个任务；而如果两个任务相关性高，那么 Gate 的权重分布相差会不大，会类似于一般的多任务学习。
 
@@ -75,7 +77,7 @@ img
 
 #### MTL模型在不同相关性任务下的loss分布
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/7.jpg)
 
 > 论文比较了不同 MLT 模型在不同相关性任务下的loss分布，其可以反应模型的鲁棒性，从图中可以看出：
 >
@@ -86,17 +88,17 @@ img
 
 > 论文比较了各个模型在两个数据集上的效果，如下：
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/8.jpg)
 
 #### Google推荐系统效果
 
 > 论文比较了各个模型在Google推荐系统上的效果，如下：
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/9.jpg)
 
 > 此外，论文展示了gate在两个任务上的分布，satisfaction任务的label比engagement任务的label更加稀疏，所以satisfaction的gate分布更加偏向于单个expert。
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/10.jpg)
 
 ### 代码
 
