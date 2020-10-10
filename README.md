@@ -127,11 +127,11 @@ https://github.com/drawbridge/keras-mmoe
 > 3. 用门控网络对expert的输出进行门控。每个门控网络可以学习“选择”一个子集的expert使用条件输入的例子，这允许在不同的变量之间建模复杂的交互作用。
 > 4. 每个任务的Tower网络采用LSTM机制；
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/11.jpg)
 
 ### 实验结果
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/12.jpg)
 
 > 论文比较了MoSE和七个备选模型在G Suite数据集上的效果，结论如下：
 >
