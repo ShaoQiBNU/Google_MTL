@@ -259,7 +259,7 @@ https://github.com/drawbridge/keras-mmoe
 
 > 本文是在Loss上进行优化，不同的任务仍使用其各自样本空间中的样本，如下：
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/29.jpg)
 
 ### 实验结果
 
@@ -307,21 +307,23 @@ img
 >
 > PLE的效果优于CGC；
 
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/25.jpg)
+
 #### 公开数据集表现
 
 > 作者在三个公开数据集上比较了Hard Parameter Sharing、MMoE和PLE的效果，从图中可以看出：
 >
 > Hard Parameter Sharing和MMoE均存在seesaw phenomenon，而PLE则表现很好，有效地消除了seesaw phenomenon；
 
-![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/25.jpg)
-
 ![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/26.jpg)
+
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/27.jpg)
 
 #### Expert utilization analysis
 
 > 为了公平对比，作者采用了single-level的PLE和ML-MMoE，然后可视化了CGC、MMoE、PLE和ML-MMoE的expert的utilization，如图所示：
 
-![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/27.jpg)
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/28.jpg)
 
 > 从图中可以看出：
 >
