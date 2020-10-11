@@ -158,7 +158,8 @@ https://github.com/drawbridge/keras-mmoe
 
 > 论文中将MTL模型分为了Single-Level MTL Models和Multi-Level MTL Models，如下：
 
-img
+
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/13.jpg)
 
 #### Single-Level MTL Models
 
@@ -206,7 +207,8 @@ img
 
 > 论文主要基于腾讯视频推荐中的多任务学习为例进行介绍，其视频推荐架构如下图：
 
-img3
+
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/14.jpg)
 
 > 这里主要关注VCR和VTR两个任务，VCR任务是视频播放完成度，即视频播放时长/视频总时长，这个是回归问题，并以MSE作为评估指标。VTR表示此次观看是否是一次有效观看，即观看时长是否在给定的阈值之上，这是二分类问题（如果没有观看，样本Label为0），并以AUC为评估指标。
 >
@@ -214,7 +216,8 @@ img3
 >
 > 论文对比了上述所有结构的MTL在腾讯视频VCR和VTR两个任务上相对单任务模型的离线训练结果：
 
-img
+
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/15.jpg)
 
 > 可以看到，几乎所有的网络结构都是在一个任务上表现优于单任务模型，而在另一个任务上表现差于单任务模型。尽管MMoE有了一定的改进，在VTR上取得了不错的收益，但在VCR上的收益接近于0。
 >
@@ -222,33 +225,37 @@ img
 
 #### Customized Gate Control(CGC)
 
-img
+
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/16.jpg)
 
 > CGC网络结构是Customized Sharing和MMoE的结合版本，每个任务有共享的Expert和独有的Expert。每个Expert有多个sub-network即experts，其数量可以作为参数调节。
 >
 > 以任务A来说，将Experts A里面的多个Expert的输出以及Experts Shared里面的多个Expert的输出，通过类似于MMoE的门控机制之后输入到任务A的上层网络中，计算公式如下：
 
-img
+
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/17.jpg)
 
 #### Progressive Layered Extraction(PLE)
 
-img
+
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/18.jpg)
 
 > PLE是在CGC基础上考虑了不同Expert的交互，可以看作是Customized Sharing和ML-MMOE的结合版本。
 >
 > 下层模块中增加了多层Extraction Network。在每一层Extraction Network，共享Experts不断吸收各自独有的Experts之间的信息，而任务独有的Experts则从共享Experts中吸收有用的信息，具体计算和CGC一样。
 
-img
+
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/19.jpg)
 
 ### MTL loss优化
 
 > 传统的MTL的损失是各任务损失的加权和，如下：
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/20.jpg)
 
 > 而在腾讯视频场景下，不同任务的样本空间是不一样的，比如计算视频的完成度，必须有视频点击行为才可以。不同任务的样本空间如下图所示：
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/21.jpg)
 
 > 本文是在Loss上进行优化，不同的任务仍使用其各自样本空间中的样本，如下：
 
@@ -260,7 +267,7 @@ img
 
 ##### VCR/VTR
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/22.jpg)
 
 > VCR 和 VTR之间的关系复杂，从图中可以看出：
 >
@@ -272,7 +279,7 @@ img
 
 ##### CTR/VCR
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/23.jpg)
 
 > CTR和VCR之间是正相关关系，关系简单，从图中可以看出：
 >
@@ -288,7 +295,7 @@ img
 >
 > CGC和PLE的效果均显著优于其他模型，PLE效果最好；
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/24.jpg)
 
 #### 更多任务表现结果
 
@@ -306,15 +313,15 @@ img
 >
 > Hard Parameter Sharing和MMoE均存在seesaw phenomenon，而PLE则表现很好，有效地消除了seesaw phenomenon；
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/25.jpg)
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/26.jpg)
 
 #### Expert utilization analysis
 
 > 为了公平对比，作者采用了single-level的PLE和ML-MMoE，然后可视化了CGC、MMoE、PLE和ML-MMoE的expert的utilization，如图所示：
 
-img
+![image](https://github.com/ShaoQiBNU/Google_MTL/blob/main/img/27.jpg)
 
 > 从图中可以看出：
 >
