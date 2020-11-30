@@ -332,3 +332,8 @@ https://github.com/drawbridge/keras-mmoe
 > MMoE和ML-MMoE所有的expert权重几乎不为0，这也表明：没有先验知识的情况下，MMOE and ML-MMOE很难收敛到CGC和PLE的结构，即便理论上存在可能性；
 >
 > 与CGC相比，PLE的shared experts对Tower有更大的影响，尤其是在VTR任务中。PLE性能优于CGC，这表明共享更高级的更深层表示的价值。换句话说，为了在任务之间共享某些更深的语义表示，PLE提供了更好的联合路由和学习方案。
+
+
+## 其他多任务模型
+
+https://zhuanlan.zhihu.com/p/268359893
